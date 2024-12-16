@@ -1,5 +1,5 @@
+const bcrypt = require("bcryptjs");
 import UserModel from "../models/UserModel";
-import bcrypt from "bcrypt";
 import { getAccesstoken } from "../utils/getAccesstoken";
 
 const login = async (req: any, res: any) => {
