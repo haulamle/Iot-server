@@ -13,8 +13,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.refreshToken = exports.login = void 0;
+const bcrypt = require("bcryptjs");
 const UserModel_1 = __importDefault(require("../models/UserModel"));
-const bcrypt_1 = __importDefault(require("bcrypt"));
 const getAccesstoken_1 = require("../utils/getAccesstoken");
 const login = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const body = req.body;
@@ -25,7 +25,7 @@ const login = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         if (!user) {
             throw new Error(`Tài khoản không tồn tại`);
         }
-        const isMatchPassword = yield bcrypt_1.default.compare(password, user.password);
+        const isMatchPassword = yield bcrypt.compare(password, user.password);
         if (!isMatchPassword) {
             throw new Error("Đăng nhập thất bại, vui lòng kiểm tra lại username/Password và thử lại");
         }
