@@ -9,6 +9,10 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  rule: {
+    type: Number,
+    default: 1,
+  },
 
   createdAt: {
     type: Date,

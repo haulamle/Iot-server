@@ -30,6 +30,7 @@ const login = async (req: any, res: any) => {
         token: await getAccesstoken({
           _id: user._id,
           username: user.username,
+          role: user.rule ?? 1,
         }),
       },
     });
@@ -51,6 +52,7 @@ const refreshToken = async (req: any, res: any) => {
     const token = await getAccesstoken({
       _id: id,
       username: user.username,
+      role: user.rule || 1,
     });
 
     res.status(200).json({
